@@ -1,39 +1,31 @@
-{% set version = "2.2.0" %}
+{% set name = "gflags" %}
+{% set version = "2.2.1" %}
 
 package:
-  name: gflags
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: gflags-{{ version }}.tar.gz
+  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
-  sha1: bf07a7926cb2ce4dd4048bdc081f9e00e91cefd6
-
-  patches:
-    - windows_cmake_install_bindir.patch       # [win]
+  sha256: ae27cdbcd6a2f935baa78e4f21f675649271634c092b1be01469440495609d0e
 
 build:
-  number: 1
-  # py36 since it uses vc14 like py35
-  skip: true  # [win and py36]
-  features:
-    - vc9   # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py35]
-
+  number: 0
+  run_exports:
+    # seems to change SONAME every minor version
+    # https://abi-laboratory.pro/tracker/timeline/gflags/
+    - {{ pin_subpackage('gflags', max_pin='x.x') }}
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - cmake
-    - python  # [win]
     - msinttypes  # [win and py<35]
 
 test:
-  requires:
-    - python 2.7.*  # [win and py27]
-    - python 3.4.*  # [win and py34]
-    - python 3.5.*  # [win and py35]
   commands:
     - test -f ${PREFIX}/lib/libgflags.dylib                           # [osx]
     - test -f ${PREFIX}/lib/libgflags_nothreads.dylib                 # [osx]
@@ -44,12 +36,19 @@ test:
     - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1          # [win]
     - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1          # [win]
     - if not exist %PREFIX%\\Library\\lib\\gflags_static.lib exit 1   # [win]
+    - conda inspect linkages -p $PREFIX gflags  # [unix]
 
 about:
   home: https://github.com/gflags/gflags
   license: BSD 3-Clause
+  license_family: BSD
   license_file: COPYING.txt
   summary: A C++ library that implements commandline flags processing.
+  description: |
+    gflags are Commandline flags that Users specify on the command line when they run an executable.
+  doc_url: https://gflags.github.io/gflags/
+  doc_source_url: https://github.com/gflags/gflags/blob/971dd2a4fadac9cdab174c523c22df79efd63aa5/index.html
+  dev_url: https://bitbucket.org/noppo/gevent-websocket
 
 extra:
   recipe-maintainers:
