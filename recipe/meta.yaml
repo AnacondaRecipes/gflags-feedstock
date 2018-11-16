@@ -1,5 +1,5 @@
 {% set name = "gflags" %}
-{% set version = "2.2.1" %}
+{% set version = "2.2.2" %}
 
 package:
   name: {{ name }}
@@ -8,7 +8,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
-  sha256: ae27cdbcd6a2f935baa78e4f21f675649271634c092b1be01469440495609d0e
+  sha256: 34af2f15cf7367513b352bdcd2493ab14ce43692d2dcd9dfc499492966c64dcf
 
 build:
   number: 0
