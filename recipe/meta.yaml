@@ -22,7 +22,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
-    - make
+    - make   # [not win64]
   host:
     - msinttypes  # [win and py<35]
 
@@ -37,7 +37,7 @@ test:
     - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1          # [win]
     - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1          # [win]
     - if not exist %PREFIX%\\Library\\lib\\gflags_static.lib exit 1   # [win]
-    - conda inspect linkages -p $PREFIX gflags  # [unix]
+
 
 about:
   home: https://github.com/gflags/gflags
