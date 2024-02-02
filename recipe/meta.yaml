@@ -41,15 +41,14 @@ test:
 
 about:
   home: https://github.com/gflags/gflags
-  license: BSD 3-Clause
+  license: BSD-3-Clause 
   license_family: BSD
   license_file: COPYING.txt
   summary: A C++ library that implements commandline flags processing.
   description: |
     gflags are Commandline flags that Users specify on the command line when they run an executable.
   doc_url: https://gflags.github.io/gflags/
-  doc_source_url: https://github.com/gflags/gflags/blob/971dd2a4fadac9cdab174c523c22df79efd63aa5/index.html
-  dev_url: https://bitbucket.org/noppo/gevent-websocket
+  dev_url: https://github.com/gflags/gflags
 
 extra:
   recipe-maintainers:
