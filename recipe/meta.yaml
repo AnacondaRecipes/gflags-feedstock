@@ -11,7 +11,7 @@ source:
   sha256: 34af2f15cf7367513b352bdcd2493ab14ce43692d2dcd9dfc499492966c64dcf
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # seems to change SONAME every minor version
     # https://abi-laboratory.pro/tracker/timeline/gflags/
