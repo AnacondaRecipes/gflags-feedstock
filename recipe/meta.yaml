@@ -1,14 +1,13 @@
 {% set name = "gflags" %}
-{% set version = "2.2.2" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://github.com/gflags/gflags/archive/v{{ version }}.tar.gz
-  sha256: 34af2f15cf7367513b352bdcd2493ab14ce43692d2dcd9dfc499492966c64dcf
+  url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: f619a51371f41c0ad6837b2a98af9d4643b3371015d873887f7e8d3237320b2f
 
 build:
   number: 1
@@ -19,6 +18,7 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
@@ -47,7 +47,7 @@ about:
   summary: A C++ library that implements commandline flags processing.
   description: |
     gflags are Commandline flags that Users specify on the command line when they run an executable.
-  doc_url: https://gflags.github.io/gflags/
+  doc_url: https://gflags.github.io/gflags
   dev_url: https://github.com/gflags/gflags
 
 extra:
