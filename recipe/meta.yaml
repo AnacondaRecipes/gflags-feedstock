@@ -10,7 +10,7 @@ source:
   sha256: f619a51371f41c0ad6837b2a98af9d4643b3371015d873887f7e8d3237320b2f
 
 build:
-  number: 1
+  number: 0
   run_exports:
     # seems to change SONAME every minor version
     # https://abi-laboratory.pro/tracker/timeline/gflags/
@@ -37,7 +37,6 @@ test:
     - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1          # [win]
     - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1          # [win]
     - if not exist %PREFIX%\\Library\\lib\\gflags_static.lib exit 1   # [win]
-
 
 about:
   home: https://github.com/gflags/gflags
