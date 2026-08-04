@@ -1,5 +1,5 @@
 {% set name = "gflags" %}
-{% set version = "2.3.0" %}
+{% set version = "2.3.1" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/{{ name }}/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: f619a51371f41c0ad6837b2a98af9d4643b3371015d873887f7e8d3237320b2f
+  sha256: 1b5e0648d7b94021895086e65479b4eaca7935eecfffd7dd9512eb576181c53d
 
 build:
   number: 0
@@ -22,21 +22,21 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
-    - make   # [not win64]
+    - make  # [not win64]
   host:
     - msinttypes  # [win and py<35]
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libgflags.dylib                           # [osx]
-    - test -f ${PREFIX}/lib/libgflags_nothreads.dylib                 # [osx]
-    - test -f ${PREFIX}/lib/libgflags.so                              # [linux]
-    - test -f ${PREFIX}/lib/libgflags_nothreads.so                    # [linux]
-    - test -f ${PREFIX}/lib/libgflags.a                               # [not win]
-    - test -f ${PREFIX}/lib/libgflags_nothreads.a                     # [not win]
-    - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1          # [win]
-    - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1          # [win]
-    - if not exist %PREFIX%\\Library\\lib\\gflags_static.lib exit 1   # [win]
+    - test -f ${PREFIX}/lib/libgflags.dylib  # [osx]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.dylib  # [osx]
+    - test -f ${PREFIX}/lib/libgflags.so  # [linux]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.so  # [linux]
+    - test -f ${PREFIX}/lib/libgflags.a  # [not win]
+    - test -f ${PREFIX}/lib/libgflags_nothreads.a  # [not win]
+    - if not exist %PREFIX%\\Library\\bin\\gflags.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\gflags.lib exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\gflags_static.lib exit 1  # [win]
 
 about:
   home: https://github.com/gflags/gflags
