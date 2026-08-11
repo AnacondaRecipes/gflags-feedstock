@@ -11,10 +11,6 @@ source:
 
 build:
   number: 0
-  run_exports:
-    # seems to change SONAME every minor version
-    # https://abi-laboratory.pro/tracker/timeline/gflags/
-    - {{ pin_subpackage('gflags', max_pin='x.x') }}
 
 requirements:
   build:
