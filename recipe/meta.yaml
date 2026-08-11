@@ -11,6 +11,9 @@ source:
 
 build:
   number: 0
+  run_exports:
+    # seems to change SONAME every minor version
+    - {{ pin_subpackage('gflags', max_pin='x.x') }}
 
 requirements:
   build:
