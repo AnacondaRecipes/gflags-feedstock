@@ -10,7 +10,7 @@ source:
   sha256: 1b5e0648d7b94021895086e65479b4eaca7935eecfffd7dd9512eb576181c53d
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # seems to change SONAME every minor version
     - {{ pin_subpackage('gflags', max_pin='x.x') }}
@@ -21,7 +21,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
-    - make  # [not win64]
+    - make  # [unix]
   host:
     - msinttypes  # [win and py<35]
 
